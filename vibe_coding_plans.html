@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canva AI 바이브코딩 동아리 · 16차시 세부 계획안</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f6f4f0;
+  --ink: #1a1714;
+  --ink2: #4a4540;
+  --card: #ffffff;
+  --border: #e0dbd2;
+  --p1: #e8521a; --p1bg: #fff3ee; --p1light: #fde8dc;
+  --p2: #2d6be4; --p2bg: #eef3ff; --p2light: #dce8ff;
+  --p3: #16a05c; --p3bg: #eef8f2; --p3light: #d4f0e2;
+  --p4: #8b3fc8; --p4bg: #f4eeff; --p4light: #e3d2f8;
+  --yellow: #fbbf24;
+  --red: #ef4444;
+  --green: #22c55e;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans KR',sans-serif; background:var(--bg); color:var(--ink); }
+
+/* ── COVER ── */
+.cover {
+  background: var(--ink);
+  color: #fff;
+  padding: 64px 48px 56px;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content:'';
+  position:absolute; top:-80px; right:-80px;
+  width:320px; height:320px;
+  border-radius:50%;
+  background: rgba(232,82,26,0.18);
+}
+.cover-label {
+  font-family:'DM Mono',monospace;
+  font-size:11px; letter-spacing:.18em;
+  text-transform:uppercase;
+  color: var(--p1);
+  margin-bottom:16px;
+}
+.cover h1 { font-size:clamp(28px,4vw,44px); font-weight:900; line-height:1.2; margin-bottom:12px; }
+.cover h1 em { font-style:normal; color:var(--p1); }
+.cover-meta { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
+.cover-chip {
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:99px;
+  padding:6px 16px;
+  font-size:12px;
+}
+.cover-chip b { color:var(--yellow); }
+
+/* ── NAV ── */
+.nav {
+  background: var(--card);
+  border-bottom: 1.5px solid var(--border);
+  padding: 20px 48px;
+  display: flex; flex-wrap:wrap; gap:8px;
+}
+.nav-item {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:5px 12px;
+  border-radius:99px;
+  font-size:11.5px; font-weight:700;
+  text-decoration:none;
+  border:1.5px solid transparent;
+  transition: all .15s;
+}
+.nav-item:hover { opacity:.8; }
+.n1 { background:var(--p1bg); color:var(--p1); border-color:var(--p1); }
+.n2 { background:var(--p2bg); color:var(--p2); border-color:var(--p2); }
+.n3 { background:var(--p3bg); color:var(--p3); border-color:var(--p3); }
+.n4 { background:var(--p4bg); color:var(--p4); border-color:var(--p4); }
+
+/* ── MAIN ── */
+.main { max-width:960px; margin:0 auto; padding:48px 32px 80px; }
+
+/* ── PHASE HEADER ── */
+.phase-header {
+  display:flex; align-items:center; gap:14px;
+  margin: 48px 0 28px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--border);
+}
+.phase-header:first-of-type { margin-top:0; }
+.phase-bar { width:6px; height:40px; border-radius:3px; flex-shrink:0; }
+.phase-info h2 { font-size:20px; font-weight:900; }
+.phase-info p { font-size:12.5px; color:var(--ink2); margin-top:3px; }
+.phase-range {
+  margin-left:auto;
+  font-family:'DM Mono',monospace;
+  font-size:13px; font-weight:500;
+  white-space:nowrap;
+}
+
+/* ── LESSON CARD ── */
+.lesson {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+}
+.lesson-head {
+  display:flex; align-items:center; gap:16px;
+  padding: 20px 28px;
+  border-bottom: 1.5px solid var(--border);
+}
+.lesson-num {
+  width:44px; height:44px;
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'DM Mono',monospace; font-size:16px; font-weight:500;
+  color:#fff; flex-shrink:0;
+}
+.lesson-title h3 { font-size:17px; font-weight:900; margin-bottom:3px; }
+.lesson-title .sub { font-size:12px; color:var(--ink2); }
+.lesson-tools { margin-left:auto; display:flex; flex-wrap:wrap; gap:5px; justify-content:flex-end; }
+.tag {
+  font-size:10px; font-weight:700;
+  padding:3px 9px; border-radius:5px;
+  letter-spacing:.02em;
+}
+.t-media { background:#fde8dc; color:#b83a10; }
+.t-write { background:#dde8ff; color:#1e4db0; }
+.t-design { background:#d5f0e4; color:#0e7c43; }
+.t-proto { background:#e8daff; color:#6b2ba8; }
+.t-present { background:#fef3d9; color:#9c6c00; }
+.t-canva { background:#f0f0f0; color:#444; }
+
+/* ── LESSON BODY ── */
+.lesson-body { padding: 28px; }
+
+/* 시간 타임라인 */
+.timeline { margin-bottom:28px; }
+.tl-item {
+  display:grid;
+  grid-template-columns: 80px 1fr;
+  gap:0 16px;
+  margin-bottom:0;
+}
+.tl-item + .tl-item .tl-time { padding-top:0; }
+.tl-time {
+  font-family:'DM Mono',monospace;
+  font-size:11px; color:var(--ink2);
+  padding: 14px 0 0;
+  text-align:right;
+  line-height:1.4;
+}
+.tl-content {
+  border-left: 2px solid var(--border);
+  padding: 12px 0 16px 18px;
+  position:relative;
+}
+.tl-content::before {
+  content:'';
+  position:absolute; left:-6px; top:18px;
+  width:10px; height:10px;
+  border-radius:50%;
+  background:#fff;
+  border:2px solid var(--border);
+}
+.tl-item.active .tl-content { border-left-color: currentColor; }
+.tl-item.active .tl-content::before { background:currentColor; border-color:currentColor; }
+.tl-step {
+  font-size:11px; font-weight:700; letter-spacing:.08em;
+  text-transform:uppercase; margin-bottom:4px;
+}
+.tl-title { font-size:14px; font-weight:700; margin-bottom:6px; }
+.tl-desc { font-size:12.5px; color:var(--ink2); line-height:1.6; }
+
+/* 섹션 */
+.section { margin-bottom:24px; }
+.section-title {
+  font-size:12px; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink2);
+  border-bottom:1px solid var(--border);
+  padding-bottom:8px; margin-bottom:14px;
+}
+.section p { font-size:13px; line-height:1.7; color:var(--ink); margin-bottom:10px; }
+.section ul { padding-left:18px; }
+.section li { font-size:13px; line-height:1.7; color:var(--ink); margin-bottom:5px; }
+
+/* 인용 / 교사 멘트 */
+.quote {
+  background: #f9f7f4;
+  border-left: 3px solid var(--border);
+  padding: 12px 16px;
+  border-radius: 0 8px 8px 0;
+  margin: 10px 0;
+  font-size:12.5px; line-height:1.65; color:var(--ink2);
+}
+.quote strong { color:var(--ink); display:block; margin-bottom:4px; font-size:11px; letter-spacing:.06em; text-transform:uppercase; }
+
+/* 미션 박스 */
+.mission {
+  border: 1.5px dashed var(--border);
+  border-radius:10px;
+  padding:16px 18px;
+  margin:12px 0;
+  background:#fafaf8;
+}
+.mission-label {
+  font-size:10px; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink2);
+  margin-bottom:8px;
+}
+.mission p { font-size:13px; line-height:1.6; margin:0; }
+
+/* 팁 테이블 */
+.tip-table { width:100%; border-collapse:collapse; font-size:12px; margin-top:10px; }
+.tip-table th {
+  background:var(--bg); text-align:left;
+  padding:8px 12px; font-size:11px;
+  font-weight:700; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--ink2);
+  border-bottom:1px solid var(--border);
+}
+.tip-table td { padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.55; }
+.tip-table tr:last-child td { border-bottom:none; }
+.tip-table td:first-child { color:var(--ink2); width:38%; }
+
+/* 체크리스트 */
+.checklist { list-style:none; padding:0; }
+.checklist li {
+  display:flex; align-items:flex-start; gap:8px;
+  font-size:13px; line-height:1.6; margin-bottom:7px; color:var(--ink);
+}
+.checklist li::before {
+  content:'☐';
+  font-size:14px; color:var(--ink2);
+  flex-shrink:0; margin-top:1px;
+}
+
+/* 결과물 배지 */
+.outcome-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+.outcome-badge {
+  display:inline-flex; align-items:center; gap:5px;
+  padding:6px 14px;
+  border-radius:99px;
+  font-size:11.5px; font-weight:700;
+  border:1.5px solid var(--border);
+  background:var(--card);
+  color:var(--ink);
+}
+.outcome-badge::before { content:'→'; font-family:'DM Mono',monospace; }
+
+/* 코드 블록 */
+.code-block {
+  background: #1e1c1a;
+  color: #d4d0c8;
+  border-radius:8px;
+  padding:14px 18px;
+  font-family:'DM Mono',monospace;
+  font-size:11.5px;
+  line-height:1.7;
+  margin:10px 0;
+  white-space:pre-wrap;
+}
+
+/* 비교 그리드 */
+.compare { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:12px 0; }
+.compare-box {
+  border:1.5px solid var(--border);
+  border-radius:10px;
+  padding:14px 16px;
+}
+.compare-box h4 { font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:8px; color:var(--ink2); }
+.compare-box p { font-size:12.5px; line-height:1.55; }
+
+@media (max-width:600px) {
+  .cover { padding:36px 24px; }
+  .main { padding:28px 16px 60px; }
+  .lesson-head { flex-wrap:wrap; }
+  .lesson-tools { margin-left:0; }
+  .compare { grid-template-columns:1fr; }
+  .tl-item { grid-template-columns:60px 1fr; }
+}
+@media print {
+  body { background:white; }
+  .nav { display:none; }
+  .lesson { break-inside:avoid; box-shadow:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-label">🎨 Canva AI 바이브코딩 동아리</div>
+  <h1>초등학교 6학년<br><em>16차시</em> 세부 수업 계획안</h1>
+  <div class="cover-meta">
+    <div class="cover-chip">🏫 대상 <b>초등 6학년</b></div>
+    <div class="cover-chip">⏱ 차시당 <b>40분</b></div>
+    <div class="cover-chip">🛠 도구 <b>Canva AI (교육용 계정)</b></div>
+    <div class="cover-chip">📅 총시수 <b>16차시 · 640분</b></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <a class="nav-item n1" href="#p1">🟠 1단계 · 1–4차시 AI 탐색</a>
+  <a class="nav-item n2" href="#p2">🔵 2단계 · 5–8차시 콘텐츠 제작</a>
+  <a class="nav-item n3" href="#p3">🟢 3단계 · 9–13차시 앱 완성</a>
+  <a class="nav-item n4" href="#p4">🟣 4단계 · 14–16차시 발표·성장</a>
+</div>
+
+<div class="main">
+
+<!-- ════════════════════════════════ PHASE 1 ════════════════════════════════ -->
+<div id="p1" class="phase-header">
+  <div class="phase-bar" style="background:var(--p1)"></div>
+  <div class="phase-info">
+    <h2 style="color:var(--p1)">1단계 · AI 탐색 &amp; 바이브 감각 키우기</h2>
+    <p>Canva AI의 핵심 기능을 체험하며 프롬프트 설계 감각을 익힌다</p>
+  </div>
+  <div class="phase-range" style="color:var(--p1)">1 – 4차시</div>
+</div>
+
+<!-- ── 1차시 ── -->
+<div class="lesson" id="l1">
+  <div class="lesson-head">
+    <div class="lesson-num" style="background:var(--p1)">1</div>
+    <div class="lesson-title">
+      <h3>바이브코딩이란?</h3>
+      <div class="sub">오리엔테이션 &amp; 캔바 탐색</div>
+    </div>
+    <div class="lesson-tools">
+      <span class="tag t-media">Magic Media</span>
+      <span class="tag t-canva">캔바 기초</span>
+    </div>
+  </div>
+  <div class="lesson-body">
+
+    <div class="timeline">
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">0–10분</div>
+        <div class="tl-content">
+          <div class="tl-step">1단계 · 도입</div>
+          <div class="tl-title">바이브코딩 세계로 초대</div>
+          <div class="tl-desc">교사가 실시간으로 AI 이미지를 생성해 "코딩 없이 만든다"는 개념 전달 → 핵심 질문 3가지 제시 → 16차시 로드맵 공유</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">10–20분</div>
+        <div class="tl-content">
+          <div class="tl-step">2단계 · 개념</div>
+          <div class="tl-title">바이브코딩 3분 완성</div>
+          <div class="tl-desc">기존 코딩 vs 바이브코딩 비교 → 좋은 프롬프트 vs 나쁜 프롬프트 실험 → 바이브(Vibe) = 스타일 + 분위기 + 색감 + 느낌</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">20–33분</div>
+        <div class="tl-content">
+          <div class="tl-step">3단계 · 실습</div>
+          <div class="tl-title">캔바 AI와 첫 만남</div>
+          <div class="tl-desc">교육용 계정 로그인 → 인터페이스 탐색(만들기·앱·공유 버튼) → Magic Media로 "좋아하는 것 두 가지 합치기" 미션</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">33–38분</div>
+        <div class="tl-content">
+          <div class="tl-step">4단계 · 공유</div>
+          <div class="tl-title">내 첫 바이브 뽐내기</div>
+          <div class="tl-desc">미니 갤러리 워크 → 프롬프트 한 줄 발표 → 교사가 프롬프트의 좋은 점 짚어 칭찬</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">38–40분</div>
+        <div class="tl-content">
+          <div class="tl-step">5단계 · 마무리</div>
+          <div class="tl-title">동아리 약속 &amp; 다음 예고</div>
+          <div class="tl-desc">AI 윤리 약속 3가지(초상권·정직·책임) → 2차시(Magic Media 심화) 예고 → 소감 한 마디</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📌 핵심 교사 멘트</div>
+      <div class="quote"><strong>훅 멘트 (0분)</strong>"선생님이 방금 코드 한 줄도 안 짰어요. 그냥 하고 싶은 장면을 말로 써넣었을 뿐이에요. 여러분도 오늘부터 이걸 배웁니다."</div>
+      <div class="quote"><strong>프롬프트 막힐 때</strong>"AI가 네 마음을 못 읽은 것 같으면, 어떤 단어를 더 추가하거나 바꾸면 좋을까? 스타일을 바꿔볼까? 배경을 더 구체적으로 써볼까?"</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">🎯 오늘의 미션</div>
+      <div class="mission">
+        <div class="mission-label">실습 미션</div>
+        <p>자신이 가장 좋아하는 것 두 가지를 합쳐서 상상의 장면을 만들어 보세요.<br>
+        공식: <b>[누가/무엇이] + [어디서 무엇을 하는 중] + [스타일/느낌]</b><br>
+        예) "우주비행사 고양이 + 달 위에서 라면을 먹고 있는 + 픽사 3D 스타일"</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">⚠️ 운영 팁</div>
+      <table class="tip-table">
+        <tr><th>상황</th><th>대응</th></tr>
+        <tr><td>로그인이 안 되는 학생</td><td>미리 지정한 도우미 학생이 옆에서 도움, 교사는 전체 진행 유지</td></tr>
+        <tr><td>결과물이 마음에 안 드는 학생</td><td>"프롬프트를 조금씩 바꾸며 재생성하는 것 자체가 핵심 학습"임을 안내</td></tr>
+        <tr><td>부적절한 이미지 시도</td><td>즉시 개별 피드백, 분위기 망치지 않게 조용히</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📦 차시 결과물</div>
+      <div class="outcome-row">
+        <span class="outcome-badge">첫 AI 이미지 1장</span>
+        <span class="outcome-badge">바이브 공식 이해</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 2차시 ── -->
+<div class="lesson" id="l2">
+  <div class="lesson-head">
+    <div class="lesson-num" style="background:var(--p1)">2</div>
+    <div class="lesson-title">
+      <h3>마법 같은 이미지 생성</h3>
+      <div class="sub">Magic Media 심화 · 나만의 바이브 카드 완성</div>
+    </div>
+    <div class="lesson-tools">
+      <span class="tag t-media">Magic Media</span>
+    </div>
+  </div>
+  <div class="lesson-body">
+
+    <div class="timeline">
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">0–7분</div>
+        <div class="tl-content">
+          <div class="tl-step">1단계 · 도입</div>
+          <div class="tl-title">1차시 작품 돌아보기</div>
+          <div class="tl-desc">학생 1~2명 1차시 결과물 화면 공유 → 프롬프트 어디가 잘 됐는지 짚기 → 오늘 목표: 바이브 카드 완성 예고</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">7–17분</div>
+        <div class="tl-content">
+          <div class="tl-step">2단계 · 개념</div>
+          <div class="tl-title">스타일·분위기 키워드 사전</div>
+          <div class="tl-desc">5가지 바이브 유형(귀여운·신나는·미래적·자연친화·고급스러운) 비교 시연 → 같은 주제라도 스타일 키워드 하나로 결과가 완전히 달라짐을 직접 시연</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">17–33분</div>
+        <div class="tl-content">
+          <div class="tl-step">3단계 · 실습</div>
+          <div class="tl-title">나만의 바이브 카드 만들기</div>
+          <div class="tl-desc">캔바 프레젠테이션 1장에 내가 선택한 바이브 유형·색감·스타일 키워드 정리 → 같은 주제를 서로 다른 바이브로 2장 생성해 비교</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">33–38분</div>
+        <div class="tl-content">
+          <div class="tl-step">4단계 · 공유</div>
+          <div class="tl-title">바이브 카드 발표</div>
+          <div class="tl-desc">"내 바이브는 __입니다, 왜냐하면 __이기 때문입니다" 한 문장 발표 → 서로 다른 스타일 비교 감상</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">38–40분</div>
+        <div class="tl-content">
+          <div class="tl-step">5단계 · 마무리</div>
+          <div class="tl-title">바이브 카드 저장 &amp; 다음 예고</div>
+          <div class="tl-desc">바이브 카드를 PNG로 다운로드하거나 공유 링크 저장 → 3차시(Magic Eraser) 예고</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📋 바이브 유형 참고표 (칠판 게시용)</div>
+      <table class="tip-table">
+        <tr><th>바이브</th><th>색감 키워드</th><th>스타일 키워드</th></tr>
+        <tr><td>귀여운</td><td>파스텔 핑크, 민트, 연보라</td><td>둥글둥글, 귀여운 일러스트</td></tr>
+        <tr><td>신나는</td><td>밝은 노랑, 오렌지, 빨강</td><td>팝아트, 두꺼운 선</td></tr>
+        <tr><td>미래적</td><td>네온 블루, 보라, 검정</td><td>SF, 홀로그램 느낌</td></tr>
+        <tr><td>자연친화</td><td>초록, 갈색, 베이지</td><td>수채화, 손그림</td></tr>
+        <tr><td>고급스러운</td><td>골드, 블랙, 화이트</td><td>미니멀, 모던</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📦 차시 결과물</div>
+      <div class="outcome-row">
+        <span class="outcome-badge">나만의 바이브 카드 1장</span>
+        <span class="outcome-badge">스타일 키워드 사전</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 3차시 ── -->
+<div class="lesson" id="l3">
+  <div class="lesson-head">
+    <div class="lesson-num" style="background:var(--p1)">3</div>
+    <div class="lesson-title">
+      <h3>지우고 바꾸는 마법</h3>
+      <div class="sub">Magic Eraser &amp; Magic Edit</div>
+    </div>
+    <div class="lesson-tools">
+      <span class="tag t-media">Magic Eraser</span>
+      <span class="tag t-media">Magic Edit</span>
+    </div>
+  </div>
+  <div class="lesson-body">
+
+    <div class="timeline">
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">0–5분</div>
+        <div class="tl-content">
+          <div class="tl-step">1단계 · 도입</div>
+          <div class="tl-title">"AI로 사진 고치기" 퀴즈</div>
+          <div class="tl-desc">수정 전·후 이미지 2장을 보여 주며 "뭐가 어떻게 바뀌었을까?" 질문 → 학생들이 차이를 발표 → 오늘 기능 예고</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">5–15분</div>
+        <div class="tl-content">
+          <div class="tl-step">2단계 · 개념</div>
+          <div class="tl-title">지우개 vs 편집 차이 이해</div>
+          <div class="tl-desc">Magic Eraser: 원하지 않는 부분을 브러시로 칠하면 AI가 자연스럽게 지워 줌 / Magic Edit: 지운 자리에 새로운 오브젝트를 프롬프트로 채워 넣음 → 교사 실시간 시연 2회</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">15–33분</div>
+        <div class="tl-content">
+          <div class="tl-step">3단계 · 실습</div>
+          <div class="tl-title">2차시 바이브 카드 수정하기</div>
+          <div class="tl-desc">미션1: 바이브 카드 이미지에서 마음에 안 드는 요소 Eraser로 제거 → 미션2: 빈 자리에 Magic Edit으로 새 오브젝트 채워 넣기 → 미션3: 결과 비교 캡처</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">33–38분</div>
+        <div class="tl-content">
+          <div class="tl-step">4단계 · 공유</div>
+          <div class="tl-title">Before &amp; After 발표</div>
+          <div class="tl-desc">수정 전·후 2장을 나란히 놓고 "무엇을 지우고 무엇을 넣었는지, 왜 그렇게 했는지" 발표</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">38–40분</div>
+        <div class="tl-content">
+          <div class="tl-step">5단계 · 마무리</div>
+          <div class="tl-title">편집 윤리 &amp; 다음 예고</div>
+          <div class="tl-desc">"실제 사람 사진을 무단으로 수정하면 안 되는 이유" 한 마디 → 4차시(Magic Write) 예고</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">⚠️ 운영 팁</div>
+      <table class="tip-table">
+        <tr><th>상황</th><th>대응</th></tr>
+        <tr><td>Eraser 브러시 크기 조절 몰라서 막히는 경우</td><td>상단 슬라이더로 조절, 작은 브러시가 더 정교함</td></tr>
+        <tr><td>Edit 후 결과가 이상한 경우</td><td>프롬프트를 더 구체적으로, 또는 Eraser 영역을 넓혀 재시도</td></tr>
+        <tr><td>실제 사람 사진 편집 시도</td><td>조용히 개별 지도, AI 윤리 약속 재확인</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📦 차시 결과물</div>
+      <div class="outcome-row">
+        <span class="outcome-badge">Before·After 이미지 세트</span>
+        <span class="outcome-badge">업그레이드된 바이브 카드</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 4차시 ── -->
+<div class="lesson" id="l4">
+  <div class="lesson-head">
+    <div class="lesson-num" style="background:var(--p1)">4</div>
+    <div class="lesson-title">
+      <h3>AI에게 글 쓰게 하기</h3>
+      <div class="sub">Magic Write · 주체적 글쓰기</div>
+    </div>
+    <div class="lesson-tools">
+      <span class="tag t-write">Magic Write</span>
+    </div>
+  </div>
+  <div class="lesson-body">
+
+    <div class="timeline">
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">0–7분</div>
+        <div class="tl-content">
+          <div class="tl-step">1단계 · 도입</div>
+          <div class="tl-title">"AI가 쓴 글 vs 내가 쓴 글"</div>
+          <div class="tl-desc">같은 주제로 AI가 생성한 글과 학생이 직접 쓴 글을 나란히 제시 → 차이점 발표 → "AI를 도구로 쓰되 주인은 내가 되어야 한다" 메시지 전달</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">7–15분</div>
+        <div class="tl-content">
+          <div class="tl-step">2단계 · 개념</div>
+          <div class="tl-title">Magic Write 작동 원리</div>
+          <div class="tl-desc">텍스트 박스 선택 → Magic Write 클릭 → 프롬프트 입력 → 결과 수정·다시쓰기·길이조절 기능 시연 → 좋은 글쓰기 프롬프트 공식 안내</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">15–33분</div>
+        <div class="tl-content">
+          <div class="tl-step">3단계 · 실습</div>
+          <div class="tl-title">앱 소개글 초안 작성</div>
+          <div class="tl-desc">미션1: Magic Write로 내 앱 아이디어 소개글 초안 생성 → 미션2: AI 글에서 내 생각과 다른 부분 직접 수정 → 미션3: 30초 발표용 멘트로 변환</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">33–38분</div>
+        <div class="tl-content">
+          <div class="tl-step">4단계 · 공유</div>
+          <div class="tl-title">30초 앱 소개 발표</div>
+          <div class="tl-desc">수정된 소개글로 30초 발표 → 친구들이 "이 앱 쓰고 싶다면 엄지 척" 반응 → 공감 많은 아이디어 칭찬</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p1)">
+        <div class="tl-time">38–40분</div>
+        <div class="tl-content">
+          <div class="tl-step">5단계 · 마무리</div>
+          <div class="tl-title">AI 글쓰기 원칙 &amp; 다음 예고</div>
+          <div class="tl-desc">"AI가 써 준 글을 그대로 내 글이라 하면 안 된다" 한 마디 → 5차시(앱 기획) 예고</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📋 Magic Write 프롬프트 공식 (칠판 게시)</div>
+      <div class="code-block">[내 아이디어 한 줄]을 위한 앱 소개글.
+앱 이름, 목적, 주요 기능 [숫자]가지, 사용 대상을 포함해서
+[초등학생이 / 선생님이] 이해하기 쉬운 말로 써줘.
+분량은 [짧게 / 200자 / 3문단] 정도로.</div>
+      <p style="font-size:12px;color:var(--ink2);margin-top:8px;">다듬기용 추가 프롬프트: "더 쉽고 친근한 말투로 바꿔줘" / "핵심만 남기고 짧게 요약해줘" / "30초 발표용 멘트로 바꿔줘"</p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📦 차시 결과물</div>
+      <div class="outcome-row">
+        <span class="outcome-badge">앱 소개글 초안</span>
+        <span class="outcome-badge">30초 발표 멘트</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════ PHASE 2 ════════════════════════════════ -->
+<div id="p2" class="phase-header">
+  <div class="phase-bar" style="background:var(--p2)"></div>
+  <div class="phase-info">
+    <h2 style="color:var(--p2)">2단계 · 콘텐츠 기획 &amp; 제작</h2>
+    <p>앱 아이디어를 기획하고 UI 에셋을 만들어 인터랙티브 프로토타입을 완성한다</p>
+  </div>
+  <div class="phase-range" style="color:var(--p2)">5 – 8차시</div>
+</div>
+
+<!-- ── 5차시 ── -->
+<div class="lesson" id="l5">
+  <div class="lesson-head">
+    <div class="lesson-num" style="background:var(--p2)">5</div>
+    <div class="lesson-title">
+      <h3>내 앱 아이디어 기획하기</h3>
+      <div class="sub">앱 기획 &amp; 화면 흐름 설계</div>
+    </div>
+    <div class="lesson-tools">
+      <span class="tag t-design">캔바 프레임</span>
+      <span class="tag t-write">Magic Write</span>
+    </div>
+  </div>
+  <div class="lesson-body">
+
+    <div class="timeline">
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">0–7분</div>
+        <div class="tl-content">
+          <div class="tl-step">1단계 · 도입</div>
+          <div class="tl-title">기획이란 무엇인가</div>
+          <div class="tl-desc">4차시 소개글 회상 → 실제 앱 기획서 예시(간단한 버전) 보여 주기 → 오늘 목표: 나만의 앱 기획서 + 화면 흐름도 완성</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">7–15분</div>
+        <div class="tl-content">
+          <div class="tl-step">2단계 · 개념</div>
+          <div class="tl-title">앱 기획의 4가지 질문</div>
+          <div class="tl-desc">① 누구를 위해? ② 무슨 문제를? ③ 어떻게 해결? ④ 화면은 몇 장? → 예시 앱(급식 메뉴 알림 앱)으로 4가지 질문 함께 작성</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">15–33분</div>
+        <div class="tl-content">
+          <div class="tl-step">3단계 · 실습</div>
+          <div class="tl-title">기획서 + 화면 흐름도</div>
+          <div class="tl-desc">미션1: 4가지 질문 기획서 작성 (Magic Write 보조 활용) → 미션2: 종이에 화면 흐름도 손 스케치 (홈→메뉴1→메뉴2 형태) → 미션3: 캔바에 흐름도 슬라이드로 옮기기</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">33–38분</div>
+        <div class="tl-content">
+          <div class="tl-step">4단계 · 공유</div>
+          <div class="tl-title">모둠 기획 발표</div>
+          <div class="tl-desc">모둠별 아이디어 한 줄 발표 → 친구들이 "써보고 싶은 앱"에 스티커(또는 손들기) → 가장 인기 있는 아이디어 칭찬</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">38–40분</div>
+        <div class="tl-content">
+          <div class="tl-step">5단계 · 마무리</div>
+          <div class="tl-title">기획서 저장 &amp; 다음 예고</div>
+          <div class="tl-desc">기획서 파일 이름 규칙 안내(예: "학번_앱기획_v1") → 6차시(UI 에셋 제작) 예고 → 오늘 기획서가 앞으로 16차시의 설계도가 됨을 강조</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📋 기획서 작성 템플릿</div>
+      <div class="code-block">앱 이름: ________________
+한 줄 소개: ________________
+사용 대상: ________________
+해결하는 문제: ________________
+주요 기능 3가지:
+  1. ________________
+  2. ________________
+  3. ________________
+화면 구성 (몇 장): ________________장</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📦 차시 결과물</div>
+      <div class="outcome-row">
+        <span class="outcome-badge">앱 기획서 (4가지 질문)</span>
+        <span class="outcome-badge">화면 흐름도 (손 스케치)</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 6차시 ── -->
+<div class="lesson" id="l6">
+  <div class="lesson-head">
+    <div class="lesson-num" style="background:var(--p2)">6</div>
+    <div class="lesson-title">
+      <h3>나만의 UI 에셋 만들기</h3>
+      <div class="sub">아이콘·버튼·배경 AI 제작 &amp; 무드보드</div>
+    </div>
+    <div class="lesson-tools">
+      <span class="tag t-media">Magic Media</span>
+      <span class="tag t-design">UI 요소</span>
+    </div>
+  </div>
+  <div class="lesson-body">
+
+    <div class="timeline">
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">0–7분</div>
+        <div class="tl-content">
+          <div class="tl-step">1단계 · 도입</div>
+          <div class="tl-title">실제 앱 UI 뜯어보기</div>
+          <div class="tl-desc">인기 앱(날씨, 유튜브, 카카오톡) 화면을 보며 "아이콘·버튼·배경이 각각 어디 있나요?" 찾기 → 오늘은 내 앱에 쓸 이 세 가지를 직접 AI로 만든다고 예고</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">7–15분</div>
+        <div class="tl-content">
+          <div class="tl-step">2단계 · 개념</div>
+          <div class="tl-title">UI 에셋 프롬프트 공식</div>
+          <div class="tl-desc">아이콘: "심플한 앱 아이콘, 투명 배경, 플랫 디자인" / 버튼: "모바일 앱 UI 버튼, 둥근 모서리, 단색 배경" / 배경: "모바일 홈 화면 배경, 세로, 중앙이 단순한" → 교사 3가지 시연</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">15–33분</div>
+        <div class="tl-content">
+          <div class="tl-step">3단계 · 실습</div>
+          <div class="tl-title">에셋 3종 세트 + 무드보드</div>
+          <div class="tl-desc">미션1: 내 앱 바이브에 맞는 아이콘 2개 생성 → 미션2: 버튼 이미지 1개 생성 → 미션3: 홈 화면 배경 1개 생성 → 미션4: 캔바 1장에 무드보드로 모아 정리</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">33–38분</div>
+        <div class="tl-content">
+          <div class="tl-step">4단계 · 공유</div>
+          <div class="tl-title">무드보드 갤러리</div>
+          <div class="tl-desc">화면을 옆 친구에게 보여 주며 "내 앱의 바이브가 느껴지나요?" 확인 → 가장 통일감 있는 무드보드 2~3개 전체 공유</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">38–40분</div>
+        <div class="tl-content">
+          <div class="tl-step">5단계 · 마무리</div>
+          <div class="tl-title">에셋 폴더 정리 &amp; 다음 예고</div>
+          <div class="tl-desc">생성한 에셋을 캔바 폴더에 정리 저장 → 7차시에 이 에셋들로 실제 앱 화면을 조립한다고 예고</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📋 에셋별 추천 프롬프트 앞부분</div>
+      <div class="code-block">아이콘: "심플한 앱 아이콘, 투명 배경, 플랫 디자인 스타일, [색상], [주제]"
+버튼:  "모바일 앱 UI 버튼, 둥근 모서리, 단색 배경, [색상], [텍스트 없음]"
+배경:  "모바일 앱 홈 화면 배경, 세로 방향, 중앙이 비교적 단순한, [바이브 키워드]"</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">⚠️ 운영 팁</div>
+      <table class="tip-table">
+        <tr><th>상황</th><th>대응</th></tr>
+        <tr><td>투명 배경 아이콘이 안 나오는 경우</td><td>프롬프트에 "white background"로 생성 후 캔바 배경 제거 기능 사용</td></tr>
+        <tr><td>버튼에 텍스트가 들어가서 어색한 경우</td><td>"no text, icon only" 추가</td></tr>
+        <tr><td>바이브와 안 맞는 에셋이 나오는 경우</td><td>2차시 바이브 카드를 옆에 열어 두고 스타일 키워드 그대로 복사</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📦 차시 결과물</div>
+      <div class="outcome-row">
+        <span class="outcome-badge">아이콘 2개</span>
+        <span class="outcome-badge">버튼 1개</span>
+        <span class="outcome-badge">배경 1개</span>
+        <span class="outcome-badge">무드보드 1장</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 7차시 ── -->
+<div class="lesson" id="l7">
+  <div class="lesson-head">
+    <div class="lesson-num" style="background:var(--p2)">7</div>
+    <div class="lesson-title">
+      <h3>화면과 화면 연결하기</h3>
+      <div class="sub">프로토타이핑 1 · 하이퍼링크</div>
+    </div>
+    <div class="lesson-tools">
+      <span class="tag t-proto">하이퍼링크</span>
+      <span class="tag t-proto">프레젠테이션</span>
+    </div>
+  </div>
+  <div class="lesson-body">
+
+    <div class="timeline">
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">0–7분</div>
+        <div class="tl-content">
+          <div class="tl-step">1단계 · 도입</div>
+          <div class="tl-title">프로토타입이란 무엇인가</div>
+          <div class="tl-desc">6차시 무드보드 확인 → 교사 완성 프로토타입 시연(버튼 클릭 → 화면 이동) → "오늘 여러분도 이걸 만든다" 예고</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">7–17분</div>
+        <div class="tl-content">
+          <div class="tl-step">2단계 · 개념</div>
+          <div class="tl-title">하이퍼링크 연결 원리</div>
+          <div class="tl-desc">슬라이드 = 화면, 요소 = 버튼 개념 → 요소 선택 → Ctrl+K → [프레젠테이션 내 슬라이드] 탭 → 이동할 슬라이드 선택 → 교사 3화면 시연</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">17–33분</div>
+        <div class="tl-content">
+          <div class="tl-step">3단계 · 실습</div>
+          <div class="tl-title">내 앱 화면 조립 &amp; 연결</div>
+          <div class="tl-desc">미션1: 흐름도 기반 슬라이드 구성(슬라이드명 설정 필수) → 미션2: 6차시 에셋 배치 → 미션3: 버튼에 하이퍼링크 연결 → 프레젠테이션 모드로 테스트</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">33–38분</div>
+        <div class="tl-content">
+          <div class="tl-step">4단계 · 공유</div>
+          <div class="tl-title">짝꿍에게 앱 체험시키기</div>
+          <div class="tl-desc">프레젠테이션 모드에서 짝꿍이 직접 버튼 누르기 → 끊긴 링크 발견 → 즉석 수정 → 소감 교환</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">38–40분</div>
+        <div class="tl-content">
+          <div class="tl-step">5단계 · 마무리</div>
+          <div class="tl-title">슬라이드 명명 규칙 강조</div>
+          <div class="tl-desc">슬라이드 이름 일괄 점검(이름 없으면 링크 꼬임) → 레시피 카드 업데이트 → 8차시(애니메이션) 예고</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📎 하이퍼링크 체크리스트 (칠판 게시)</div>
+      <ul class="checklist">
+        <li>모든 슬라이드에 화면 이름이 붙어 있나요?</li>
+        <li>홈 화면에서 다음 화면으로 이동하는 버튼이 있나요?</li>
+        <li>홈 화면이 아닌 모든 화면에 "홈으로" 또는 "뒤로" 버튼이 있나요?</li>
+        <li>프레젠테이션 모드에서 모든 버튼이 실제로 작동하나요?</li>
+        <li>마지막 화면에서 다시 홈으로 돌아오는 루프가 있나요?</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📦 차시 결과물</div>
+      <div class="outcome-row">
+        <span class="outcome-badge">하이퍼링크 연결 프로토타입</span>
+        <span class="outcome-badge">짝꿍 체험 완료</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 8차시 ── -->
+<div class="lesson" id="l8">
+  <div class="lesson-head">
+    <div class="lesson-num" style="background:var(--p2)">8</div>
+    <div class="lesson-title">
+      <h3>마법 애니메이션으로 생동감</h3>
+      <div class="sub">프로토타이핑 2 · Magic Animate &amp; 전환 효과</div>
+    </div>
+    <div class="lesson-tools">
+      <span class="tag t-proto">Magic Animate</span>
+      <span class="tag t-proto">전환 효과</span>
+    </div>
+  </div>
+  <div class="lesson-body">
+
+    <div class="timeline">
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">0–7분</div>
+        <div class="tl-content">
+          <div class="tl-step">1단계 · 도입</div>
+          <div class="tl-title">정적 vs 동적 앱 비교</div>
+          <div class="tl-desc">7차시 프로토타입(정적) vs 교사 애니메이션 적용 버전(동적) 나란히 시연 → "어느 게 더 진짜 앱 같아요?" → 오늘은 살아 움직이는 버전으로 업그레이드</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">7–17분</div>
+        <div class="tl-content">
+          <div class="tl-step">2단계 · 개념</div>
+          <div class="tl-title">Animate &amp; 전환 효과 원리</div>
+          <div class="tl-desc">요소 선택 → [애니메이션] → Magic Animate 자동 적용 vs 수동 설정 비교 → 슬라이드 전환 효과(페이드·슬라이드·팝) 3가지 시연</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">17–33분</div>
+        <div class="tl-content">
+          <div class="tl-step">3단계 · 실습</div>
+          <div class="tl-title">7차시 프로토타입 업그레이드</div>
+          <div class="tl-desc">미션1: 홈 화면 주요 요소에 등장 애니메이션 적용 → 미션2: 화면 전환 효과 바이브에 맞게 선택 → 미션3: 전체 흐름 프레젠테이션 모드로 최종 테스트</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">33–38분</div>
+        <div class="tl-content">
+          <div class="tl-step">4단계 · 공유</div>
+          <div class="tl-title">살아 움직이는 앱 시연</div>
+          <div class="tl-desc">자원 학생 1명이 앞에서 자신의 프로토타입을 전체에 시연 → "코드 한 줄도 없이 만든 거예요" 교사 강조</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p2)">
+        <div class="tl-time">38–40분</div>
+        <div class="tl-content">
+          <div class="tl-step">5단계 · 마무리</div>
+          <div class="tl-title">중간 점검 &amp; 다음 예고</div>
+          <div class="tl-desc">기획서 vs 현재 프로토타입 비교 → 9차시부터 본격 완성 단계 예고 → "잘 됐지만 더 다듬을 부분"을 스스로 메모</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">⚠️ 운영 팁</div>
+      <table class="tip-table">
+        <tr><th>상황</th><th>대응</th></tr>
+        <tr><td>애니메이션이 너무 많아 산만해지는 경우</td><td>"홈 화면 핵심 요소 1~2개만 적용, 나머지는 없음으로" 안내</td></tr>
+        <tr><td>전환 효과와 바이브가 안 맞는 경우</td><td>귀여운=팝·팅, 미래적=페이드·슬라이드, 자연=부드러운 페이드 추천</td></tr>
+        <tr><td>링크가 애니메이션 후 작동 안 하는 경우</td><td>애니메이션 적용 후 요소 링크 재확인 필요</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📦 차시 결과물</div>
+      <div class="outcome-row">
+        <span class="outcome-badge">애니메이션 적용 프로토타입</span>
+        <span class="outcome-badge">전환 효과 완성</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════ PHASE 3 ════════════════════════════════ -->
+<div id="p3" class="phase-header">
+  <div class="phase-bar" style="background:var(--p3)"></div>
+  <div class="phase-info">
+    <h2 style="color:var(--p3)">3단계 · 앱 완성 &amp; 고도화</h2>
+    <p>홈 화면부터 콘텐츠 화면까지 완성하고 홍보물과 발표 자료를 제작한다</p>
+  </div>
+  <div class="phase-range" style="color:var(--p3)">9 – 13차시</div>
+</div>
+
+<!-- ── 9차시 ── -->
+<div class="lesson" id="l9">
+  <div class="lesson-head">
+    <div class="lesson-num" style="background:var(--p3)">9</div>
+    <div class="lesson-title">
+      <h3>홈 화면 완성하기</h3>
+      <div class="sub">메인 페이지 디자인 완성 · 브랜드 통일</div>
+    </div>
+    <div class="lesson-tools">
+      <span class="tag t-design">레이아웃</span>
+      <span class="tag t-media">Magic Media</span>
+    </div>
+  </div>
+  <div class="lesson-body">
+
+    <div class="timeline">
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">0–7분</div>
+        <div class="tl-content">
+          <div class="tl-step">1단계 · 도입</div>
+          <div class="tl-title">좋은 홈 화면의 조건</div>
+          <div class="tl-desc">인기 앱 홈 화면 3종 비교 → 공통점 찾기(로고·타이틀·주요 버튼·배경) → "오늘은 내 앱의 첫 인상을 완성한다" 선언</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">7–15분</div>
+        <div class="tl-content">
+          <div class="tl-step">2단계 · 개념</div>
+          <div class="tl-title">브랜드 컬러 &amp; 폰트 통일</div>
+          <div class="tl-desc">캔바 스타일 패널(색상·폰트 저장) 사용법 → 브랜드 컬러 2가지·폰트 1쌍 정하는 방법 → 교사 시연: 임의 디자인을 브랜드 통일 전·후 비교</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">15–33분</div>
+        <div class="tl-content">
+          <div class="tl-step">3단계 · 실습</div>
+          <div class="tl-title">홈 화면 4요소 완성</div>
+          <div class="tl-desc">미션1: 앱 로고(Magic Media) 또는 타이틀 텍스트 디자인 → 미션2: 배경 이미지·색상 배치 → 미션3: 주요 메뉴 버튼 배치 → 미션4: 브랜드 컬러·폰트 일괄 적용</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">33–38분</div>
+        <div class="tl-content">
+          <div class="tl-step">4단계 · 공유</div>
+          <div class="tl-title">첫 인상 품평회</div>
+          <div class="tl-desc">"이 앱 화면을 처음 봤을 때 무슨 앱 같았어요?" 짝꿍에게 묻기 → 의도와 첫 인상이 일치하는지 확인 → 불일치시 어느 요소를 수정할지 토의</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">38–40분</div>
+        <div class="tl-content">
+          <div class="tl-step">5단계 · 마무리</div>
+          <div class="tl-title">스타일 저장 &amp; 다음 예고</div>
+          <div class="tl-desc">캔바 브랜드 컬러·폰트 저장 확인 → 10차시에는 내부 콘텐츠 화면들을 같은 스타일로 채운다고 예고</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📋 홈 화면 4요소 체크</div>
+      <ul class="checklist">
+        <li>앱 이름(로고 또는 타이틀 텍스트)이 눈에 잘 띄나요?</li>
+        <li>배경 이미지·색상이 바이브 카드와 일치하나요?</li>
+        <li>주요 메뉴로 이동하는 버튼이 명확하게 보이나요?</li>
+        <li>브랜드 컬러와 폰트가 일관되게 쓰였나요?</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📦 차시 결과물</div>
+      <div class="outcome-row">
+        <span class="outcome-badge">완성된 홈 화면 1장</span>
+        <span class="outcome-badge">브랜드 컬러·폰트 확정</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 10차시 ── -->
+<div class="lesson" id="l10">
+  <div class="lesson-head">
+    <div class="lesson-num" style="background:var(--p3)">10</div>
+    <div class="lesson-title">
+      <h3>콘텐츠 화면 채우기</h3>
+      <div class="sub">내부 페이지 디자인 · 카드형·리스트형 레이아웃</div>
+    </div>
+    <div class="lesson-tools">
+      <span class="tag t-write">Magic Write</span>
+      <span class="tag t-design">그리드</span>
+    </div>
+  </div>
+  <div class="lesson-body">
+
+    <div class="timeline">
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">0–7분</div>
+        <div class="tl-content">
+          <div class="tl-step">1단계 · 도입</div>
+          <div class="tl-title">앱 속 콘텐츠 유형 탐색</div>
+          <div class="tl-desc">실제 앱 내부 화면(카드형 목록·리스트·상세 보기) 예시 분석 → 내 앱 흐름도에서 어떤 화면이 남았는지 확인 → 오늘 목표 설정</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">7–15분</div>
+        <div class="tl-content">
+          <div class="tl-step">2단계 · 개념</div>
+          <div class="tl-title">레이아웃 2가지: 카드 vs 리스트</div>
+          <div class="tl-desc">카드형: 이미지+제목+설명 한 블록, 시각적 임팩트 강함 / 리스트형: 정보 많을 때 유리, 텍스트 중심 → 교사 캔바 그리드·표 기능으로 각각 시연</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">15–33분</div>
+        <div class="tl-content">
+          <div class="tl-step">3단계 · 실습</div>
+          <div class="tl-title">내부 콘텐츠 화면 2장 완성</div>
+          <div class="tl-desc">미션1: 흐름도에서 완성 못 한 내부 화면 2장 선택 → 미션2: 카드형 또는 리스트형 레이아웃 적용 → 미션3: Magic Write로 각 카드·항목 텍스트 생성 후 편집</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">33–38분</div>
+        <div class="tl-content">
+          <div class="tl-step">4단계 · 공유</div>
+          <div class="tl-title">정보 전달력 테스트</div>
+          <div class="tl-desc">짝꿍이 콘텐츠 화면만 보고 "이 앱 무슨 정보를 주는 앱이에요?" 맞히기 → 정보 전달이 명확한지 확인</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">38–40분</div>
+        <div class="tl-content">
+          <div class="tl-step">5단계 · 마무리</div>
+          <div class="tl-title">전체 흐름 점검 &amp; 다음 예고</div>
+          <div class="tl-desc">완성된 화면 수 / 남은 화면 수 셀프 체크 → 11차시 동료 피드백으로 앱 개선한다고 예고</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📋 카드형 vs 리스트형 선택 가이드</div>
+      <div class="compare">
+        <div class="compare-box">
+          <h4>카드형 추천</h4>
+          <p>사진·이미지가 핵심인 콘텐츠 / 항목이 6개 이하 / 시각적 매력 중요 / 여행·음식·상품 소개 앱</p>
+        </div>
+        <div class="compare-box">
+          <h4>리스트형 추천</h4>
+          <p>텍스트 정보가 많은 콘텐츠 / 항목이 많아 스크롤 필요 / 빠른 탐색이 중요 / 뉴스·설정·일정 앱</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📦 차시 결과물</div>
+      <div class="outcome-row">
+        <span class="outcome-badge">내부 콘텐츠 화면 2장</span>
+        <span class="outcome-badge">AI 편집 텍스트</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 11차시 ── -->
+<div class="lesson" id="l11">
+  <div class="lesson-head">
+    <div class="lesson-num" style="background:var(--p3)">11</div>
+    <div class="lesson-title">
+      <h3>앱 점검 &amp; 피드백</h3>
+      <div class="sub">동료 리뷰 &amp; 수정 · 사용자 테스트</div>
+    </div>
+    <div class="lesson-tools">
+      <span class="tag t-proto">프레젠테이션</span>
+      <span class="tag t-canva">댓글</span>
+    </div>
+  </div>
+  <div class="lesson-body">
+
+    <div class="timeline">
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">0–7분</div>
+        <div class="tl-content">
+          <div class="tl-step">1단계 · 도입</div>
+          <div class="tl-title">좋은 피드백이란?</div>
+          <div class="tl-desc">"칭찬 2 + 개선점 1" 피드백 공식 안내 → 나쁜 피드백 예시("그냥 별로예요") vs 좋은 피드백("버튼이 잘 안 보여요, 색을 바꾸면 좋을 것 같아요") 비교 → 오늘 역할: 앱 테스터</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">7–12분</div>
+        <div class="tl-content">
+          <div class="tl-step">2단계 · 준비</div>
+          <div class="tl-title">피드백 시트 작성 준비</div>
+          <div class="tl-desc">피드백 시트(종이 또는 캔바 댓글) 배부 → 체크 항목 안내: 바이브 통일성, 버튼 작동, 정보 명확성, 디자인 완성도</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">12–30분</div>
+        <div class="tl-content">
+          <div class="tl-step">3단계 · 실습</div>
+          <div class="tl-title">순환 테스트 &amp; 즉석 수정</div>
+          <div class="tl-desc">3인 1조 → 각자 앱 체험 후 피드백 시트 작성(10분) → 피드백 수령 후 즉석 수정(8분) → 수정 내용 캡처</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">30–38분</div>
+        <div class="tl-content">
+          <div class="tl-step">4단계 · 공유</div>
+          <div class="tl-title">가장 도움된 피드백 발표</div>
+          <div class="tl-desc">모둠별 "오늘 받은 피드백 중 가장 유용했던 것" 발표 → 교사가 공통 개선점 정리</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">38–40분</div>
+        <div class="tl-content">
+          <div class="tl-step">5단계 · 마무리</div>
+          <div class="tl-title">수정 목록 정리 &amp; 다음 예고</div>
+          <div class="tl-desc">아직 수정 못 한 부분을 메모 → 12차시(포스터+QR) 이전에 앱 완성도 80% 이상 목표 강조</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📋 피드백 시트 항목</div>
+      <table class="tip-table">
+        <tr><th>항목</th><th>평가 기준</th></tr>
+        <tr><td>바이브 통일성</td><td>색감·스타일이 처음부터 끝까지 일관되나요?</td></tr>
+        <tr><td>버튼 작동</td><td>모든 버튼을 눌렀을 때 원하는 화면으로 이동하나요?</td></tr>
+        <tr><td>정보 명확성</td><td>각 화면에서 무슨 정보를 얻을 수 있는지 이해되나요?</td></tr>
+        <tr><td>디자인 완성도</td><td>전체적으로 완성된 앱처럼 보이나요?</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📦 차시 결과물</div>
+      <div class="outcome-row">
+        <span class="outcome-badge">피드백 시트 (수신)</span>
+        <span class="outcome-badge">수정된 프로토타입</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 12차시 ── -->
+<div class="lesson" id="l12">
+  <div class="lesson-head">
+    <div class="lesson-num" style="background:var(--p3)">12</div>
+    <div class="lesson-title">
+      <h3>앱 스토어 소개 페이지</h3>
+      <div class="sub">홍보 포스터 &amp; QR코드 제작</div>
+    </div>
+    <div class="lesson-tools">
+      <span class="tag t-design">포스터</span>
+      <span class="tag t-write">Magic Write</span>
+    </div>
+  </div>
+  <div class="lesson-body">
+
+    <div class="timeline">
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">0–7분</div>
+        <div class="tl-content">
+          <div class="tl-step">1단계 · 도입</div>
+          <div class="tl-title">앱 스토어 페이지 분석</div>
+          <div class="tl-desc">Play스토어·앱스토어 소개 페이지 예시 분석 → 공통 요소(앱 이름·슬로건·주요 기능·스크린샷·CTA 버튼) 파악 → 오늘 이것을 포스터 한 장으로 만든다</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">7–15분</div>
+        <div class="tl-content">
+          <div class="tl-step">2단계 · 개념</div>
+          <div class="tl-title">포스터 구성 &amp; 슬로건 작성</div>
+          <div class="tl-desc">좋은 슬로건의 조건(짧고·구체적·감정 유발) → Magic Write로 슬로건 3개 생성 후 1개 선택 → 포스터 레이아웃 3종 중 1개 선택</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">15–33분</div>
+        <div class="tl-content">
+          <div class="tl-step">3단계 · 실습</div>
+          <div class="tl-title">포스터 + QR코드 완성</div>
+          <div class="tl-desc">미션1: A4 포스터 레이아웃 구성(앱 이름·슬로건·주요 기능 3가지·스크린샷) → 미션2: 캔바 공유 링크 생성 → 미션3: QR코드 생성 사이트(qr.io 등)로 QR 생성 후 포스터 삽입</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">33–38분</div>
+        <div class="tl-content">
+          <div class="tl-step">4단계 · 공유</div>
+          <div class="tl-title">QR 체험 테스트</div>
+          <div class="tl-desc">친구 포스터의 QR을 폰으로 스캔해 실제 앱 체험 → "QR 한 번에 연결됐나요?" 확인 → 연결 오류 즉석 수정</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">38–40분</div>
+        <div class="tl-content">
+          <div class="tl-step">5단계 · 마무리</div>
+          <div class="tl-title">전시회 준비 예고</div>
+          <div class="tl-desc">포스터 PDF 다운로드 → 15차시 갤러리 전시회에 이 포스터가 걸린다는 것 예고 → 13차시(발표 슬라이드) 안내</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📋 포스터 필수 요소</div>
+      <ul class="checklist">
+        <li>앱 이름과 로고가 눈에 잘 띄나요?</li>
+        <li>슬로건이 15자 이내로 짧고 강렬한가요?</li>
+        <li>주요 기능 3가지가 명확히 표시되었나요?</li>
+        <li>앱 스크린샷(프로토타입 캡처)이 1장 이상 포함되었나요?</li>
+        <li>QR코드가 삽입되어 실제로 연결되나요?</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📦 차시 결과물</div>
+      <div class="outcome-row">
+        <span class="outcome-badge">앱 소개 포스터 (A4)</span>
+        <span class="outcome-badge">QR코드 삽입 완료</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 13차시 ── -->
+<div class="lesson" id="l13">
+  <div class="lesson-head">
+    <div class="lesson-num" style="background:var(--p3)">13</div>
+    <div class="lesson-title">
+      <h3>발표 슬라이드 만들기</h3>
+      <div class="sub">5장 프레젠테이션 제작</div>
+    </div>
+    <div class="lesson-tools">
+      <span class="tag t-present">프레젠테이션</span>
+      <span class="tag t-write">Magic Write</span>
+    </div>
+  </div>
+  <div class="lesson-body">
+
+    <div class="timeline">
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">0–7분</div>
+        <div class="tl-content">
+          <div class="tl-step">1단계 · 도입</div>
+          <div class="tl-title">좋은 발표 슬라이드의 조건</div>
+          <div class="tl-desc">텍스트 가득한 슬라이드 vs 시각적 슬라이드 비교 → "슬라이드는 발표자를 돕는 도구, 읽는 대본이 아니다" → 오늘 만들 5장 구조 안내</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">7–15분</div>
+        <div class="tl-content">
+          <div class="tl-step">2단계 · 개념</div>
+          <div class="tl-title">5장 슬라이드 구조</div>
+          <div class="tl-desc">1장: 앱 소개(이름·슬로건·대표 이미지) / 2장: 기획 의도(왜 만들었나?) / 3장: 핵심 기능(스크린샷 포함) / 4장: 제작 과정(배운 것) / 5장: 마무리(한 마디 + QR) → 교사 완성 예시 시연</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">15–33분</div>
+        <div class="tl-content">
+          <div class="tl-step">3단계 · 실습</div>
+          <div class="tl-title">5장 슬라이드 제작</div>
+          <div class="tl-desc">미션1: 캔바 프레젠테이션 5장 구성 → 미션2: Magic Write로 각 장 핵심 문장 초안 → 미션3: 앱 스크린샷·에셋 삽입 → 미션4: 브랜드 컬러·폰트 통일 적용</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">33–38분</div>
+        <div class="tl-content">
+          <div class="tl-step">4단계 · 공유</div>
+          <div class="tl-title">1분 리허설</div>
+          <div class="tl-desc">짝꿍 앞에서 슬라이드 보며 1분 발표 연습 → "잘 이해됐나요?" 피드백 1문장씩 교환</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p3)">
+        <div class="tl-time">38–40분</div>
+        <div class="tl-content">
+          <div class="tl-step">5단계 · 마무리</div>
+          <div class="tl-title">슬라이드 저장 &amp; 14차시 예고</div>
+          <div class="tl-desc">슬라이드 최종 저장 → 14차시 정식 리허설 안내 → "발표는 외우는 게 아니라 이야기하는 것" 메시지 전달</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📋 발표 슬라이드 5장 구성표</div>
+      <table class="tip-table">
+        <tr><th>장수</th><th>내용</th><th>핵심 원칙</th></tr>
+        <tr><td>1장</td><td>앱 소개: 이름·슬로건·대표 이미지</td><td>첫 인상, 텍스트 최소화</td></tr>
+        <tr><td>2장</td><td>기획 의도: 왜 만들었나?</td><td>감정 연결, 내 경험 담기</td></tr>
+        <tr><td>3장</td><td>핵심 기능: 스크린샷 2~3장</td><td>보여 주기, 설명 최소화</td></tr>
+        <tr><td>4장</td><td>제작 과정: 어떻게 만들었나?</td><td>바이브코딩 도구 강조</td></tr>
+        <tr><td>5장</td><td>마무리: 한 마디 + QR코드</td><td>강렬한 클로징</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📦 차시 결과물</div>
+      <div class="outcome-row">
+        <span class="outcome-badge">발표 슬라이드 5장</span>
+        <span class="outcome-badge">1분 리허설 완료</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════ PHASE 4 ════════════════════════════════ -->
+<div id="p4" class="phase-header">
+  <div class="phase-bar" style="background:var(--p4)"></div>
+  <div class="phase-info">
+    <h2 style="color:var(--p4)">4단계 · 발표 &amp; 성장 마무리</h2>
+    <p>리허설부터 갤러리 전시회, 포트폴리오 완성까지 동아리를 아름답게 마무리한다</p>
+  </div>
+  <div class="phase-range" style="color:var(--p4)">14 – 16차시</div>
+</div>
+
+<!-- ── 14차시 ── -->
+<div class="lesson" id="l14">
+  <div class="lesson-head">
+    <div class="lesson-num" style="background:var(--p4)">14</div>
+    <div class="lesson-title">
+      <h3>발표 리허설</h3>
+      <div class="sub">2분 발표 연습 &amp; 최종 수정</div>
+    </div>
+    <div class="lesson-tools">
+      <span class="tag t-present">발표 모드</span>
+      <span class="tag t-canva">캔바 공유</span>
+    </div>
+  </div>
+  <div class="lesson-body">
+
+    <div class="timeline">
+      <div class="tl-item active" style="color:var(--p4)">
+        <div class="tl-time">0–7분</div>
+        <div class="tl-content">
+          <div class="tl-step">1단계 · 도입</div>
+          <div class="tl-title">발표를 잘한다는 것</div>
+          <div class="tl-desc">좋은 발표·나쁜 발표 영상(또는 교사 실연) 비교 → 발표 잘하는 3가지 요소(눈 맞춤·목소리 크기·핵심만) → 오늘은 2분 타이머 두고 정식 리허설</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p4)">
+        <div class="tl-time">7–12분</div>
+        <div class="tl-content">
+          <div class="tl-step">2단계 · 준비</div>
+          <div class="tl-title">슬라이드 최종 점검</div>
+          <div class="tl-desc">오타·링크 오류·이미지 깨짐 최종 확인 → 발표 링크 공유 설정(보기 권한) → 스마트폰으로 QR 스캔 테스트</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p4)">
+        <div class="tl-time">12–33분</div>
+        <div class="tl-content">
+          <div class="tl-step">3단계 · 실습</div>
+          <div class="tl-title">2분 리허설 (2회전)</div>
+          <div class="tl-desc">3인 1조 → 1인 2분 발표 + 관찰자 2명이 피드백 시트 작성(1회전, 10분) → 피드백 반영 수정(3분) → 2회전 재발표(10분)</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p4)">
+        <div class="tl-time">33–38분</div>
+        <div class="tl-content">
+          <div class="tl-step">4단계 · 공유</div>
+          <div class="tl-title">전체 앞 자원 발표</div>
+          <div class="tl-desc">자원 학생 1~2명 전체 앞 발표 → 교사가 강점 포인트 구체적으로 칭찬 → 내일 전시회에서 만날 관람객 상상해 보기</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p4)">
+        <div class="tl-time">38–40분</div>
+        <div class="tl-content">
+          <div class="tl-step">5단계 · 마무리</div>
+          <div class="tl-title">전시회 준비물 안내</div>
+          <div class="tl-desc">15차시 전시회 운영 방식 설명(부스 배치·관람자 역할·QR 체험) → 포스터 출력 여부 확인 → "여러분의 앱이 드디어 세상에 나갑니다" 마무리</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📋 리허설 피드백 시트</div>
+      <table class="tip-table">
+        <tr><th>항목</th><th>잘됨 ✓</th><th>개선 필요</th></tr>
+        <tr><td>목소리 크기·속도</td><td></td><td></td></tr>
+        <tr><td>청중과 눈 맞춤</td><td></td><td></td></tr>
+        <tr><td>발표 내용의 명확성</td><td></td><td></td></tr>
+        <tr><td>슬라이드와 말의 연결</td><td></td><td></td></tr>
+        <tr><td>2분 시간 준수</td><td></td><td></td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📦 차시 결과물</div>
+      <div class="outcome-row">
+        <span class="outcome-badge">리허설 2회 완료</span>
+        <span class="outcome-badge">최종 수정 슬라이드</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 15차시 ── -->
+<div class="lesson" id="l15">
+  <div class="lesson-head">
+    <div class="lesson-num" style="background:var(--p4)">15</div>
+    <div class="lesson-title">
+      <h3>바이브코딩 갤러리 전시회</h3>
+      <div class="sub">발표 &amp; 앱 체험 부스 운영</div>
+    </div>
+    <div class="lesson-tools">
+      <span class="tag t-present">QR 공유</span>
+      <span class="tag t-canva">웹 게시</span>
+    </div>
+  </div>
+  <div class="lesson-body">
+
+    <div class="timeline">
+      <div class="tl-item active" style="color:var(--p4)">
+        <div class="tl-time">0–5분</div>
+        <div class="tl-content">
+          <div class="tl-step">1단계 · 준비</div>
+          <div class="tl-title">부스 세팅</div>
+          <div class="tl-desc">각자 자리에 포스터 게시 + 태블릿/PC에 앱 프로토타입 열기 → QR 최종 스캔 확인 → 관람자용 스티커(별점) 배부</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p4)">
+        <div class="tl-time">5–25분</div>
+        <div class="tl-content">
+          <div class="tl-step">2단계 · 전시</div>
+          <div class="tl-title">갤러리 오픈 (발표자·관람자 교대)</div>
+          <div class="tl-desc">절반은 부스 운영(발표자), 절반은 관람(관람자) → 10분 후 역할 교대 → 관람자는 흥미로운 앱에 스티커 부착 + 한 마디 피드백 메모</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p4)">
+        <div class="tl-time">25–33분</div>
+        <div class="tl-content">
+          <div class="tl-step">3단계 · 초청 관람</div>
+          <div class="tl-title">다른 반·선생님 초청 (선택)</div>
+          <div class="tl-desc">사전에 초청한 다른 반 학생 또는 선생님들이 QR 스캔으로 앱 체험 → 발표자는 30초 설명 + Q&amp;A</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p4)">
+        <div class="tl-time">33–38분</div>
+        <div class="tl-content">
+          <div class="tl-step">4단계 · 시상</div>
+          <div class="tl-title">스티커 집계 &amp; 칭찬 타임</div>
+          <div class="tl-desc">스티커 수 집계 → 분야별 칭찬(가장 창의적인 앱·가장 실용적인 앱·가장 아름다운 디자인) → 교사가 전체 총평</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p4)">
+        <div class="tl-time">38–40분</div>
+        <div class="tl-content">
+          <div class="tl-step">5단계 · 마무리</div>
+          <div class="tl-title">전시 사진 촬영 &amp; 16차시 예고</div>
+          <div class="tl-desc">전시 부스 단체 사진 촬영 → 16차시에 성장 포트폴리오와 수료식이 있다고 예고</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📋 전시회 운영 체크리스트</div>
+      <ul class="checklist">
+        <li>모든 학생의 포스터가 부스에 게시되었나요?</li>
+        <li>태블릿/PC에서 앱 프로토타입이 열려 있나요?</li>
+        <li>QR 스캔 시 앱이 정상 연결되나요?</li>
+        <li>관람자용 스티커와 피드백 메모지가 준비되었나요?</li>
+        <li>역할 교대 시간(10분)이 타이머로 관리되고 있나요?</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📦 차시 결과물</div>
+      <div class="outcome-row">
+        <span class="outcome-badge">갤러리 전시 완료</span>
+        <span class="outcome-badge">관람객 피드백 수집</span>
+        <span class="outcome-badge">단체 사진</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 16차시 ── -->
+<div class="lesson" id="l16">
+  <div class="lesson-head">
+    <div class="lesson-num" style="background:var(--p4)">16</div>
+    <div class="lesson-title">
+      <h3>나의 바이브코딩 성장일지</h3>
+      <div class="sub">회고 &amp; 포트폴리오 완성 &amp; 수료식</div>
+    </div>
+    <div class="lesson-tools">
+      <span class="tag t-design">포트폴리오</span>
+      <span class="tag t-write">Magic Write</span>
+    </div>
+  </div>
+  <div class="lesson-body">
+
+    <div class="timeline">
+      <div class="tl-item active" style="color:var(--p4)">
+        <div class="tl-time">0–7분</div>
+        <div class="tl-content">
+          <div class="tl-step">1단계 · 도입</div>
+          <div class="tl-title">1차시 첫 작품 vs 최종 작품</div>
+          <div class="tl-desc">1차시 Magic Media 첫 이미지를 화면에 띄움 → 최종 앱 프로토타입과 나란히 비교 → "이 변화가 여러분의 성장입니다" 교사 총평</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p4)">
+        <div class="tl-time">7–15분</div>
+        <div class="tl-content">
+          <div class="tl-step">2단계 · 개념</div>
+          <div class="tl-title">포트폴리오란 무엇인가</div>
+          <div class="tl-desc">포트폴리오 = 내 성장의 증거 모음 → 오늘 만들 포트폴리오 3장 구조 안내: 1장(나의 바이브), 2장(대표 작품 3선), 3장(배운 것·다음 도전) → 완성 예시 시연</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p4)">
+        <div class="tl-time">15–30분</div>
+        <div class="tl-content">
+          <div class="tl-step">3단계 · 실습</div>
+          <div class="tl-title">성장 포트폴리오 3장 완성</div>
+          <div class="tl-desc">미션1: 1장 — 내 바이브 선언문 + 바이브 카드 삽입 → 미션2: 2장 — 16차시 중 가장 자랑스러운 작품 3개 선택·캡처·한 줄 설명 → 미션3: 3장 — "가장 많이 배운 것" Magic Write 초안 후 내 말로 수정</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p4)">
+        <div class="tl-time">30–37분</div>
+        <div class="tl-content">
+          <div class="tl-step">4단계 · 수료식</div>
+          <div class="tl-title">바이브코딩 동아리 수료</div>
+          <div class="tl-desc">교사가 학생 한 명씩 이름을 부르며 수료 한 마디 칭찬 → 디지털 수료증 (캔바 템플릿) 이름 써서 공유 → 전체 단체 박수</div>
+        </div>
+      </div>
+      <div class="tl-item active" style="color:var(--p4)">
+        <div class="tl-time">37–40분</div>
+        <div class="tl-content">
+          <div class="tl-step">5단계 · 클로징</div>
+          <div class="tl-title">바이브코더로 살아가기</div>
+          <div class="tl-desc">"오늘 이후에도 말로 아이디어를 표현하고 AI와 협업하는 사람이 되세요" → 각자 소감 한 마디 → 동아리 공식 종료</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📋 포트폴리오 3장 구성</div>
+      <table class="tip-table">
+        <tr><th>장수</th><th>제목</th><th>포함 내용</th></tr>
+        <tr><td>1장</td><td>나의 바이브</td><td>바이브 카드 + "나는 __한 바이브코더입니다" 선언문</td></tr>
+        <tr><td>2장</td><td>나의 대표 작품 3선</td><td>작품 캡처 + 각 1문장 설명 (어떤 기능, 왜 자랑스러운지)</td></tr>
+        <tr><td>3장</td><td>나의 성장 & 다음 도전</td><td>"가장 많이 배운 것" + "다음에 도전하고 싶은 것"</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📌 마지막 교사 멘트</div>
+      <div class="quote"><strong>수료식 클로징 멘트</strong>"여러분은 오늘부터 바이브코더입니다. 복잡한 코드가 없어도, 말로 아이디어를 표현하고 AI와 함께 만들 수 있다는 걸 이제 알죠? 이 능력은 앞으로 어디서든 쓸 수 있습니다. 계속 바이브하세요!"</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📦 최종 산출물 전체</div>
+      <div class="outcome-row">
+        <span class="outcome-badge">바이브 카드</span>
+        <span class="outcome-badge">앱 프로토타입</span>
+        <span class="outcome-badge">홍보 포스터+QR</span>
+        <span class="outcome-badge">발표 슬라이드 5장</span>
+        <span class="outcome-badge">성장 포트폴리오 3장</span>
+        <span class="outcome-badge">디지털 수료증</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /main -->
+</body>
+</html>

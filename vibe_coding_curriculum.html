@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canva AI 바이브코딩 동아리 16차시 커리큘럼</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f3ef;
+    --ink: #1a1714;
+    --ink-soft: #4a4540;
+    --accent: #e8521a;
+    --accent2: #2d6be4;
+    --accent3: #16a05c;
+    --accent4: #c9920a;
+    --accent5: #8b3fc8;
+    --card: #ffffff;
+    --border: #ddd9d2;
+    --phase1: #fff3ee;
+    --phase2: #eef3ff;
+    --phase3: #eef8f2;
+    --phase4: #fdf6e3;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 48px 24px;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  .header {
+    margin-bottom: 48px;
+    position: relative;
+  }
+  .header-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 900;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .header h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .header-meta {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .meta-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    padding: 5px 14px;
+  }
+  .meta-chip span { font-weight: 700; color: var(--ink); }
+
+  /* PHASE LEGEND */
+  .legend {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* TABLE */
+  .table-wrap {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead tr {
+    background: var(--ink);
+    color: #fff;
+  }
+  thead th {
+    padding: 14px 18px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  thead th:first-child { width: 64px; text-align: center; }
+  thead th:nth-child(2) { width: 200px; }
+  thead th:nth-child(3) { width: 130px; }
+  thead th:last-child { }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #faf9f7; }
+
+  /* Phase row backgrounds */
+  tbody tr.phase1 { background: var(--phase1); }
+  tbody tr.phase1:hover { background: #fde8dc; }
+  tbody tr.phase2 { background: var(--phase2); }
+  tbody tr.phase2:hover { background: #dde8ff; }
+  tbody tr.phase3 { background: var(--phase3); }
+  tbody tr.phase3:hover { background: #d5f0e4; }
+  tbody tr.phase4 { background: var(--phase4); }
+  tbody tr.phase4:hover { background: #f5e8c0; }
+
+  td {
+    padding: 14px 18px;
+    vertical-align: middle;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  /* 차시 번호 */
+  .num-cell {
+    text-align: center;
+  }
+  .num-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+  }
+  .n-p1 { background: var(--accent); }
+  .n-p2 { background: var(--accent2); }
+  .n-p3 { background: var(--accent3); }
+  .n-p4 { background: var(--accent5); }
+
+  /* 차시명 */
+  .title-cell strong {
+    display: block;
+    font-weight: 700;
+    font-size: 13.5px;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .title-cell .sub {
+    font-size: 11.5px;
+    color: var(--ink-soft);
+  }
+
+  /* 핵심 도구 */
+  .tool-tag {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 5px;
+    letter-spacing: 0.03em;
+    margin: 2px 2px 2px 0;
+  }
+  .t-media { background: #fde8dc; color: #b83a10; }
+  .t-write { background: #e3ebff; color: #1e4db0; }
+  .t-design { background: #e0f5ea; color: #0e7c43; }
+  .t-proto { background: #f0e8ff; color: #6b2ba8; }
+  .t-present { background: #fef3d9; color: #9c6c00; }
+  .t-canva { background: #f0f0f0; color: #333; }
+
+  /* 학습목표 */
+  .goal-cell {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  /* PHASE SEPARATOR */
+  .phase-sep td {
+    padding: 0;
+    border-bottom: none;
+  }
+  .phase-label-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 18px 8px;
+  }
+  .phase-bar {
+    width: 4px;
+    height: 20px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .phase-name {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .phase-range {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-left: auto;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 32px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .footer-card {
+    flex: 1;
+    min-width: 220px;
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .footer-card h3 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .footer-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .footer-card li {
+    font-size: 12.5px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.45;
+  }
+  .footer-card li::before {
+    content: '→';
+    font-family: 'DM Mono', monospace;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  @media print {
+    body { padding: 16px; background: white; }
+    .table-wrap { box-shadow: none; }
+    tbody tr:hover { background: inherit !important; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-label">🎨 Canva AI 바이브코딩 동아리 커리큘럼</div>
+    <h1>초등학교 6학년<br><em>16차시</em> 완성 로드맵</h1>
+    <div class="header-meta">
+      <div class="meta-chip">🏫 대상 <span>초등 6학년</span></div>
+      <div class="meta-chip">⏱ 차시당 <span>40분</span></div>
+      <div class="meta-chip">📅 총 시수 <span>16차시 (640분)</span></div>
+      <div class="meta-chip">🛠 도구 <span>Canva AI (교육용 계정)</span></div>
+    </div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div> 1단계 · AI 탐색 (1–4차시)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--accent2)"></div> 2단계 · 콘텐츠 제작 (5–8차시)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--accent3)"></div> 3단계 · 앱 기획·제작 (9–13차시)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--accent5)"></div> 4단계 · 발표·성장 (14–16차시)</div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>차시</th>
+          <th>차시명</th>
+          <th>핵심 도구</th>
+          <th>학습 목표 / 결과물</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- ── PHASE 1 ── -->
+        <tr class="phase-sep">
+          <td colspan="4">
+            <div class="phase-label-row">
+              <div class="phase-bar" style="background:var(--accent)"></div>
+              <span class="phase-name" style="color:var(--accent)">1단계 · AI 탐색 &amp; 바이브 감각 키우기</span>
+              <span class="phase-range">1 – 4차시</span>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="phase1">
+          <td class="num-cell"><div class="num-badge n-p1">1</div></td>
+          <td class="title-cell">
+            <strong>바이브코딩이란?</strong>
+            <span class="sub">오리엔테이션 &amp; 캔바 탐색</span>
+          </td>
+          <td>
+            <span class="tool-tag t-media">Magic Media</span>
+            <span class="tool-tag t-canva">캔바 기초</span>
+          </td>
+          <td class="goal-cell">바이브코딩 개념 이해, 캔바 계정 로그인 &amp; 인터페이스 탐색, 첫 AI 이미지 생성 체험</td>
+        </tr>
+
+        <tr class="phase1">
+          <td class="num-cell"><div class="num-badge n-p1">2</div></td>
+          <td class="title-cell">
+            <strong>마법 같은 이미지 생성</strong>
+            <span class="sub">Magic Media 심화</span>
+          </td>
+          <td>
+            <span class="tool-tag t-media">Magic Media</span>
+          </td>
+          <td class="goal-cell">스타일·분위기 키워드로 정교한 프롬프트 작성, 바이브 카드 완성 (나만의 스타일 사전)</td>
+        </tr>
+
+        <tr class="phase1">
+          <td class="num-cell"><div class="num-badge n-p1">3</div></td>
+          <td class="title-cell">
+            <strong>지우고 바꾸는 마법</strong>
+            <span class="sub">Magic Eraser &amp; Magic Edit</span>
+          </td>
+          <td>
+            <span class="tool-tag t-media">Magic Eraser</span>
+            <span class="tool-tag t-media">Magic Edit</span>
+          </td>
+          <td class="goal-cell">불필요한 요소 제거, 원하는 오브젝트로 교체, 이미지 편집 과정에서 AI 협업 경험</td>
+        </tr>
+
+        <tr class="phase1">
+          <td class="num-cell"><div class="num-badge n-p1">4</div></td>
+          <td class="title-cell">
+            <strong>AI에게 글 쓰게 하기</strong>
+            <span class="sub">Magic Write 활용</span>
+          </td>
+          <td>
+            <span class="tool-tag t-write">Magic Write</span>
+          </td>
+          <td class="goal-cell">텍스트 프롬프트로 카피·설명문 생성, AI 글과 내 생각의 차이를 편집하며 주체적 글쓰기 연습</td>
+        </tr>
+
+        <!-- ── PHASE 2 ── -->
+        <tr class="phase-sep">
+          <td colspan="4">
+            <div class="phase-label-row">
+              <div class="phase-bar" style="background:var(--accent2)"></div>
+              <span class="phase-name" style="color:var(--accent2)">2단계 · 콘텐츠 기획 &amp; 제작</span>
+              <span class="phase-range">5 – 8차시</span>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="phase2">
+          <td class="num-cell"><div class="num-badge n-p2">5</div></td>
+          <td class="title-cell">
+            <strong>내 앱 아이디어 기획하기</strong>
+            <span class="sub">앱 기획 &amp; 화면 흐름 설계</span>
+          </td>
+          <td>
+            <span class="tool-tag t-design">캔바 프레임</span>
+            <span class="tool-tag t-write">Magic Write</span>
+          </td>
+          <td class="goal-cell">앱 주제 선정, 사용자 스토리 작성, 화면 흐름도(플로우차트) 손 스케치로 완성</td>
+        </tr>
+
+        <tr class="phase2">
+          <td class="num-cell"><div class="num-badge n-p2">6</div></td>
+          <td class="title-cell">
+            <strong>나만의 UI 에셋 만들기</strong>
+            <span class="sub">아이콘·버튼·배경 제작</span>
+          </td>
+          <td>
+            <span class="tool-tag t-media">Magic Media</span>
+            <span class="tool-tag t-design">UI 요소</span>
+          </td>
+          <td class="goal-cell">앱에 쓸 아이콘·버튼·배경 이미지를 AI로 생성, 무드보드 &amp; 에셋 시트 완성</td>
+        </tr>
+
+        <tr class="phase2">
+          <td class="num-cell"><div class="num-badge n-p2">7</div></td>
+          <td class="title-cell">
+            <strong>화면과 화면 연결하기</strong>
+            <span class="sub">프로토타이핑 1 · 하이퍼링크</span>
+          </td>
+          <td>
+            <span class="tool-tag t-proto">하이퍼링크</span>
+            <span class="tool-tag t-proto">프레젠테이션</span>
+          </td>
+          <td class="goal-cell">슬라이드 = 화면 개념 이해, 버튼에 하이퍼링크 연결, 친구가 직접 탭하며 체험하는 프로토타입 완성</td>
+        </tr>
+
+        <tr class="phase2">
+          <td class="num-cell"><div class="num-badge n-p2">8</div></td>
+          <td class="title-cell">
+            <strong>마법 애니메이션으로 생동감</strong>
+            <span class="sub">프로토타이핑 2 · Magic Animate</span>
+          </td>
+          <td>
+            <span class="tool-tag t-proto">Magic Animate</span>
+            <span class="tool-tag t-proto">전환효과</span>
+          </td>
+          <td class="goal-cell">화면 전환 애니메이션 적용, 요소별 등장 효과 설정, 살아 움직이는 앱 프로토타입으로 업그레이드</td>
+        </tr>
+
+        <!-- ── PHASE 3 ── -->
+        <tr class="phase-sep">
+          <td colspan="4">
+            <div class="phase-label-row">
+              <div class="phase-bar" style="background:var(--accent3)"></div>
+              <span class="phase-name" style="color:var(--accent3)">3단계 · 앱 완성 &amp; 고도화</span>
+              <span class="phase-range">9 – 13차시</span>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="phase3">
+          <td class="num-cell"><div class="num-badge n-p3">9</div></td>
+          <td class="title-cell">
+            <strong>홈 화면 완성하기</strong>
+            <span class="sub">메인 페이지 디자인 완성</span>
+          </td>
+          <td>
+            <span class="tool-tag t-design">레이아웃</span>
+            <span class="tool-tag t-media">Magic Media</span>
+          </td>
+          <td class="goal-cell">앱 타이틀·로고·홈 화면 디자인 완성, 브랜드 컬러 &amp; 폰트 통일, 완성도 높은 첫 인상 구현</td>
+        </tr>
+
+        <tr class="phase3">
+          <td class="num-cell"><div class="num-badge n-p3">10</div></td>
+          <td class="title-cell">
+            <strong>콘텐츠 화면 채우기</strong>
+            <span class="sub">내부 페이지 디자인</span>
+          </td>
+          <td>
+            <span class="tool-tag t-write">Magic Write</span>
+            <span class="tool-tag t-design">그리드</span>
+          </td>
+          <td class="goal-cell">카드형·리스트형 콘텐츠 레이아웃 적용, AI 텍스트를 편집해 정보 페이지 완성</td>
+        </tr>
+
+        <tr class="phase3">
+          <td class="num-cell"><div class="num-badge n-p3">11</div></td>
+          <td class="title-cell">
+            <strong>앱 점검 &amp; 피드백</strong>
+            <span class="sub">동료 리뷰 &amp; 수정</span>
+          </td>
+          <td>
+            <span class="tool-tag t-proto">프레젠테이션</span>
+            <span class="tool-tag t-canva">댓글</span>
+          </td>
+          <td class="goal-cell">짝 피드백(좋은 점 2 + 개선점 1), 링크 오류 수정, 사용자 테스트 후 앱 개선</td>
+        </tr>
+
+        <tr class="phase3">
+          <td class="num-cell"><div class="num-badge n-p3">12</div></td>
+          <td class="title-cell">
+            <strong>앱 스토어 소개 페이지</strong>
+            <span class="sub">홍보 포스터 &amp; QR코드</span>
+          </td>
+          <td>
+            <span class="tool-tag t-design">포스터</span>
+            <span class="tool-tag t-write">Magic Write</span>
+          </td>
+          <td class="goal-cell">앱 소개 포스터 제작(기능·대상·슬로건), QR코드 삽입, 전시회 홍보물 완성</td>
+        </tr>
+
+        <tr class="phase3">
+          <td class="num-cell"><div class="num-badge n-p3">13</div></td>
+          <td class="title-cell">
+            <strong>발표 슬라이드 만들기</strong>
+            <span class="sub">프레젠테이션 제작</span>
+          </td>
+          <td>
+            <span class="tool-tag t-present">프레젠테이션</span>
+            <span class="tool-tag t-write">Magic Write</span>
+          </td>
+          <td class="goal-cell">앱 기획 의도·제작 과정·핵심 기능을 담은 5장 발표 슬라이드 완성</td>
+        </tr>
+
+        <!-- ── PHASE 4 ── -->
+        <tr class="phase-sep">
+          <td colspan="4">
+            <div class="phase-label-row">
+              <div class="phase-bar" style="background:var(--accent5)"></div>
+              <span class="phase-name" style="color:var(--accent5)">4단계 · 발표 &amp; 성장 마무리</span>
+              <span class="phase-range">14 – 16차시</span>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="phase4">
+          <td class="num-cell"><div class="num-badge n-p4">14</div></td>
+          <td class="title-cell">
+            <strong>발표 리허설</strong>
+            <span class="sub">발표 연습 &amp; 최종 점검</span>
+          </td>
+          <td>
+            <span class="tool-tag t-present">발표 모드</span>
+          </td>
+          <td class="goal-cell">2분 발표 연습(기획·제작·배운 점), 슬라이드 최종 수정, 발표 피드백 반영</td>
+        </tr>
+
+        <tr class="phase4">
+          <td class="num-cell"><div class="num-badge n-p4">15</div></td>
+          <td class="title-cell">
+            <strong>바이브코딩 갤러리 전시회</strong>
+            <span class="sub">발표 &amp; 앱 체험 부스</span>
+          </td>
+          <td>
+            <span class="tool-tag t-present">QR 공유</span>
+            <span class="tool-tag t-canva">웹 게시</span>
+          </td>
+          <td class="goal-cell">전시 부스 운영, 다른 반 친구들이 QR로 앱 체험, 발표자·관람자 역할 교대</td>
+        </tr>
+
+        <tr class="phase4">
+          <td class="num-cell"><div class="num-badge n-p4">16</div></td>
+          <td class="title-cell">
+            <strong>나의 바이브코딩 성장일지</strong>
+            <span class="sub">회고 &amp; 수료식</span>
+          </td>
+          <td>
+            <span class="tool-tag t-design">포트폴리오</span>
+            <span class="tool-tag t-write">Magic Write</span>
+          </td>
+          <td class="goal-cell">1차시 첫 작품 vs 최종 작품 비교, 성장 포트폴리오 페이지 완성, 동아리 수료 인증</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FOOTER CARDS -->
+  <div class="footer">
+    <div class="footer-card">
+      <h3>🎯 수업 구조 (매 차시)</h3>
+      <ul>
+        <li>도입 · 복습 &amp; 동기 유발 (5–10분)</li>
+        <li>개념 학습 · 교사 시연 (5–10분)</li>
+        <li>직접 실습 · 미션 수행 (15–20분)</li>
+        <li>공유 · 발표 &amp; 피드백 (5분)</li>
+        <li>마무리 · 다음 차시 예고 (2–3분)</li>
+      </ul>
+    </div>
+    <div class="footer-card">
+      <h3>📦 최종 산출물</h3>
+      <ul>
+        <li>나만의 바이브 카드 (스타일 사전)</li>
+        <li>캔바 AI 앱 프로토타입 (하이퍼링크 연결)</li>
+        <li>앱 소개 포스터 + QR코드</li>
+        <li>발표 슬라이드 (5장)</li>
+        <li>성장 포트폴리오 페이지</li>
+      </ul>
+    </div>
+    <div class="footer-card">
+      <h3>💡 핵심 역량</h3>
+      <ul>
+        <li>프롬프트 설계 (정확한 의도 표현)</li>
+        <li>AI 결과물 비판적 편집 능력</li>
+        <li>UI/UX 기초 사고력</li>
+        <li>협력·발표·소통 역량</li>
+        <li>AI 윤리 &amp; 저작권 감수성</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
